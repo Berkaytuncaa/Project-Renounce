@@ -5,8 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Obstacle
-  - TurnLeft
-  - TurnRight
+  - SpawnedCar
   layers:
   - Default
   - TransparentFX
