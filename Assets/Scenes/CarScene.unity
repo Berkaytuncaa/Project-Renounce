@@ -569,12 +569,12 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 0, y: -0.53, z: 0}
   Damping: {x: 1, y: 1, z: 1}
   Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
+    Enabled: 1
+    Time: 0.107
+    Smoothing: 1.1
     IgnoreY: 0
 --- !u!114 &1274300749
 MonoBehaviour:
@@ -628,7 +628,7 @@ Transform:
   m_GameObject: {fileID: 1274300747}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.04, y: 2.96, z: -10}
+  m_LocalPosition: {x: -7.04, y: 2.43, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 1618066957}
   - component: {fileID: 1618066956}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CameraConfiner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -835,7 +835,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -851,8 +851,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 57.259377, y: 17.338339}
-      - {x: 2.731619, y: 17.375134}
+    - - {x: 55.62282, y: 13.211372}
+      - {x: 6.1470394, y: 13.959714}
       - {x: 2.847478, y: -0.736706}
       - {x: 9.07921, y: -0.69541967}
       - {x: 15.289429, y: -0.74750304}
@@ -974,8 +974,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsToSpawn:
+  - {fileID: 1132048727357185343, guid: c698e0ec5abfd0642ac5f2ab99b3a5be, type: 3}
   - {fileID: 8081243051084269442, guid: 230b6443768dad44b9face605d4e035f, type: 3}
+  - {fileID: 1132048727357185343, guid: e983595cf07ba0a4eaeb2b58f9a42168, type: 3}
+  - {fileID: 8081243051084269442, guid: 66b7fa7b4867885439a309857fb770c1, type: 3}
   - {fileID: 1132048727357185343, guid: 34b76c0bc2febe141b9f37bf52efd128, type: 3}
+  - {fileID: 8081243051084269442, guid: 7886efe4e060a3044985feab98e85fae, type: 3}
+  - {fileID: 1132048727357185343, guid: 3e010925e0555064e822a95645965737, type: 3}
+  - {fileID: 8081243051084269442, guid: db7134ecce62b5644a39c7a59508b82e, type: 3}
+  - {fileID: 1132048727357185343, guid: c36abd03f36240743b911bb9342f0959, type: 3}
+  - {fileID: 8081243051084269442, guid: b94b7aa6fda9b96469094a3d4de886ce, type: 3}
   spawnInterval: 2
   moveSpeed: 5
 --- !u!1 &2051709090
@@ -1066,7 +1074,7 @@ Transform:
   m_GameObject: {fileID: 2051709090}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.04, y: 2.96, z: -10}
+  m_LocalPosition: {x: -7.1347485, y: 0.44794, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
