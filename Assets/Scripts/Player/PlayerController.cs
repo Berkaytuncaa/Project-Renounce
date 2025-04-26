@@ -73,12 +73,12 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Roll());
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             Jump();
             _extraJump = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.W) && _extraJump > 0)
+        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) && _extraJump > 0)
         {
             Jump();
             _extraJump = 0;
@@ -131,6 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Roll()
     {
+        _anim.SetTrigger("Roll");
         _canRoll = false;
         _isRolling = true;
 
@@ -138,7 +139,7 @@ public class PlayerController : MonoBehaviour
         Vector2 originalOffset = _collider.offset;
 
         _collider.size = new Vector2(originalSize.x, originalSize.y / 2);
-        _collider.offset = new Vector2(originalOffset.x, originalOffset.y / 2);
+        //_collider.offset = new Vector2(originalOffset.x, originalOffset.y / 2);
 
         _rb.linearVelocity = new Vector2(_rollSpeed * _facingDirection, _rb.linearVelocity.y);
         yield return new WaitForSeconds(_rollTime);
@@ -181,7 +182,6 @@ public class PlayerController : MonoBehaviour
         _anim.SetBool("_isRunning", _isRunning);
         _anim.SetBool("isGrounded", IsGrounded());
         _anim.SetFloat("yVelocity", _rb.linearVelocity.y);
-        _anim.SetBool("isRolling", _isRolling);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

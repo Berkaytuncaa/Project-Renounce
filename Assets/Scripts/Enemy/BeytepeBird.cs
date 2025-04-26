@@ -44,7 +44,6 @@ public class BeytepeBird : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Platform"))
         {
             movingRight = !movingRight;
-            Debug.Log("UH");
         }
     }
 }
