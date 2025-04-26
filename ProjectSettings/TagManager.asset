@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Obstacle
+  - TurnLeft
+  - TurnRight
   layers:
   - Default
   - TransparentFX
