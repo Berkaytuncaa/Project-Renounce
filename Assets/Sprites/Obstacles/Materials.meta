@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Sprites/Obstacles/Materials.meta
 guid: 7104e446a110e4ab3a42ed3e05a09fa6
+========
+guid: 9d6601112ab734c009686addc1e06be8
+>>>>>>>> origin/BerkayBranch:Assets/Sprites/Player.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

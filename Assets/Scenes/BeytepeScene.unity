@@ -96388,7 +96388,7 @@ Tilemap:
     m_Data: {fileID: 573483323, guid: 6cb651ae93c394f7ba8b5c18678ebf98, type: 3}
   - m_RefCount: 55
     m_Data: {fileID: 1385053325, guid: 6cb651ae93c394f7ba8b5c18678ebf98, type: 3}
-  - m_RefCount: 122
+  - m_RefCount: 82
     m_Data: {fileID: 2052699095, guid: 6cb651ae93c394f7ba8b5c18678ebf98, type: 3}
   - m_RefCount: 53
     m_Data: {fileID: 1848759846, guid: 6cb651ae93c394f7ba8b5c18678ebf98, type: 3}
@@ -100872,7 +100872,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 8382717070696663976, guid: 7516e8001764b49b083d43cfc1482b71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
