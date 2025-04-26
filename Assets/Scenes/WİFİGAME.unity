@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b617ec2e3d20846a8677786f17df71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wifiIcon: {fileID: 21300000, guid: ac1c5f8d62b19d3429f53a4185956bbd, type: 3}
 --- !u!4 &921474636
 Transform:
   m_ObjectHideFlags: 0

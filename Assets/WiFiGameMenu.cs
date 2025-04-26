@@ -5,6 +5,10 @@ using UnityEngine.EventSystems;
 
 public class WiFiGameMenu : MonoBehaviour
 {
+    [SerializeField] private Sprite disconnectedWifiIcon; // Bağlı değilken gösterilecek sprite
+    [SerializeField] private Sprite connectedWifiIcon;    // Bağlandıktan sonra gösterilecek sprite
+    private Image wifiButtonImage;  // Buton görüntüsü için referans
+    // ... diğer değişkenler
     private GameObject wifiPanel;
     private Button wifiButton;
     private TMP_InputField passwordInput;
@@ -39,39 +43,38 @@ public class WiFiGameMenu : MonoBehaviour
         CreateWiFiPanel(canvasObj);
     }
 
-    void CreateWiFiButton(GameObject parent)
+void CreateWiFiButton(GameObject parent)
+{
+    GameObject buttonObj = new GameObject("WiFiButton");
+    buttonObj.transform.SetParent(parent.transform, false);
+    wifiButton = buttonObj.AddComponent<Button>();
+
+    // Image component'ini kaydet
+    wifiButtonImage = buttonObj.AddComponent<Image>();
+    wifiButtonImage.sprite = disconnectedWifiIcon; // Başlangıçta bağlı değil sprite'ı
+    wifiButtonImage.type = Image.Type.Simple;
+    wifiButtonImage.preserveAspect = true;
+    wifiButtonImage.raycastTarget = true;
+    
+    RectTransform rect = buttonObj.GetComponent<RectTransform>();
+    rect.anchorMin = new Vector2(1, 0);
+    rect.anchorMax = new Vector2(1, 0);
+    rect.pivot = new Vector2(1, 0);
+    rect.sizeDelta = new Vector2(80, 80);
+    rect.anchoredPosition = new Vector2(-20, 20);
+
+    ColorBlock colors = wifiButton.colors;
+    colors.normalColor = Color.white;
+    colors.highlightedColor = new Color(0.9f, 0.9f, 0.9f, 1f);
+    colors.pressedColor = new Color(0.7f, 0.7f, 0.7f, 1f);
+    wifiButton.colors = colors;
+
+    wifiButton.onClick.AddListener(() =>
     {
-        GameObject buttonObj = new GameObject("WiFiButton");
-        buttonObj.transform.SetParent(parent.transform, false);
-
-        wifiButton = buttonObj.AddComponent<Button>();
-        Image buttonImage = buttonObj.AddComponent<Image>();
-        buttonImage.color = new Color(0.2f, 0.4f, 0.8f);
-
-        GameObject textObj = new GameObject("ButtonText");
-        textObj.transform.SetParent(buttonObj.transform, false);
-        TextMeshProUGUI buttonText = textObj.AddComponent<TextMeshProUGUI>();
-        buttonText.text = "WiFi";
-        buttonText.fontSize = 24;
-        buttonText.alignment = TextAlignmentOptions.Center;
-        buttonText.color = Color.white;
-
-        RectTransform textRect = textObj.GetComponent<RectTransform>();
-        textRect.anchorMin = Vector2.zero;
-        textRect.anchorMax = Vector2.one;
-        textRect.sizeDelta = Vector2.zero;
-        textRect.offsetMin = Vector2.zero;
-        textRect.offsetMax = Vector2.zero;
-
-        RectTransform rect = buttonObj.GetComponent<RectTransform>();
-        rect.anchorMin = new Vector2(1, 0);
-        rect.anchorMax = new Vector2(1, 0);
-        rect.pivot = new Vector2(1, 0);
-        rect.sizeDelta = new Vector2(100, 100);
-        rect.anchoredPosition = new Vector2(-20, 20);
-
-        wifiButton.onClick.AddListener(ToggleWiFiPanel);
-    }
+        RectTransform wifiButtonRect = wifiButton.GetComponent<RectTransform>();
+        ToggleWiFiPanel(wifiButtonRect);
+    });
+}
 
     void CreateWiFiPanel(GameObject parent)
     {
@@ -103,7 +106,7 @@ public class WiFiGameMenu : MonoBehaviour
         titleObj.transform.SetParent(wifiPanel.transform, false);
 
         TextMeshProUGUI titleText = titleObj.AddComponent<TextMeshProUGUI>();
-        titleText.text = "WiFi Ağları";
+        titleText.text = "WiFi";
         titleText.fontSize = 24;
         titleText.alignment = TextAlignmentOptions.Center;
         titleText.color = Color.white;
@@ -112,7 +115,7 @@ public class WiFiGameMenu : MonoBehaviour
         titleRect.anchorMin = new Vector2(0, 1);
         titleRect.anchorMax = new Vector2(1, 1);
         titleRect.sizeDelta = new Vector2(0, 50);
-        titleRect.anchoredPosition = new Vector2(0, -25);
+        titleRect.anchoredPosition = new Vector2(0, -5);
     }
 
     void CreateNetworkList()
@@ -144,13 +147,18 @@ public class WiFiGameMenu : MonoBehaviour
         scrollRectTransform.offsetMin = Vector2.zero;
         scrollRectTransform.offsetMax = Vector2.zero;
 
-        // Viewport oluştur
         GameObject viewport = new GameObject("Viewport", typeof(RectTransform));
         viewport.transform.SetParent(scrollView.transform, false);
+
+        // Add RectTransform
         RectTransform viewportRect = viewport.GetComponent<RectTransform>();
+
+        // Add Image (transparent background)
         Image viewportImage = viewport.AddComponent<Image>();
         viewportImage.color = Color.clear;
-        viewport.AddComponent<Mask>();
+        viewportImage.raycastTarget = false; // <-- important
+
+        // Only add RectMask2D, NOT Mask
         viewport.AddComponent<RectMask2D>();
 
         // Viewport pozisyonu
@@ -159,7 +167,7 @@ public class WiFiGameMenu : MonoBehaviour
         viewportRect.sizeDelta = Vector2.zero;
         viewportRect.offsetMin = Vector2.zero;
         viewportRect.offsetMax = Vector2.zero;
-
+        
         // Content oluştur
         GameObject content = new GameObject("Content", typeof(RectTransform));
         content.transform.SetParent(viewport.transform, false);
@@ -192,12 +200,12 @@ public class WiFiGameMenu : MonoBehaviour
 
         // Örnek WiFi ağları
         string[] networks = new string[] 
-        { 
-        "Teknopark Ankara Misafir",
+        { "Totally Free WiFi",
         "ODTU_Teknokent_5G",
         "Cyberpark_Free",
         "AnkaraTeknokent_Secure",
         "TGB_Misafir_2.4GHz",
+        "Teknopark Ankara Misafir",
         "Teknopark_Staff",
         "Bilkent_Cyberpark",
         "AR-GE_Network",
@@ -333,56 +341,86 @@ void CreateNetworkButton(string networkName, int index, float height, float spac
 void SelectNetwork(string networkName)
 {
     selectedNetwork = networkName;
-    ShowMessage("\"" + networkName + "\" ağı seçildi.", Color.white);
+    // Removed the ShowMessage call
 }
 
-    void CreatePasswordField()
-    {
-        GameObject inputObj = new GameObject("PasswordInput");
-        inputObj.transform.SetParent(wifiPanel.transform, false);
+void CreatePasswordField()
+{
+    GameObject inputObj = new GameObject("PasswordInput");
+    inputObj.transform.SetParent(wifiPanel.transform, false);
 
-        passwordInput = inputObj.AddComponent<TMP_InputField>();
-        Image inputImage = inputObj.AddComponent<Image>();
-        inputImage.color = Color.white;
+    passwordInput = inputObj.AddComponent<TMP_InputField>();
+    Image inputImage = inputObj.AddComponent<Image>();
+    inputImage.color = Color.white;
 
-        GameObject placeholderObj = new GameObject("Placeholder");
-        placeholderObj.transform.SetParent(inputObj.transform, false);
-        TextMeshProUGUI placeholder = placeholderObj.AddComponent<TextMeshProUGUI>();
-        placeholder.text = "WiFi Şifresi";
-        placeholder.fontSize = 18;
-        placeholder.alignment = TextAlignmentOptions.Left;
-        placeholder.color = new Color(0.5f, 0.5f, 0.5f);
+    // Simple progress bar background
+    GameObject barBg = new GameObject("ProgressBarBackground");
+    barBg.transform.SetParent(inputObj.transform, false);
+    Image barBgImage = barBg.AddComponent<Image>();
+    barBgImage.color = new Color(0.2f, 0.2f, 0.2f, 0.8f);
+    
+    GameObject barFill = new GameObject("ProgressBarFill");
+    barFill.transform.SetParent(barBg.transform, false);
+    Image barFillImage = barFill.AddComponent<Image>();
+    barFillImage.color = new Color(0.3f, 0.3f, 0.3f, 1f); // Simple gray fill
 
-        GameObject textObj = new GameObject("Text");
-        textObj.transform.SetParent(inputObj.transform, false);
-        TextMeshProUGUI inputText = textObj.AddComponent<TextMeshProUGUI>();
-        inputText.text = "";
-        inputText.fontSize = 18;
-        inputText.alignment = TextAlignmentOptions.Left;
-        inputText.color = Color.white;
+    // Set up the progress bar position
+    RectTransform barBgRect = barBg.GetComponent<RectTransform>();
+    barBgRect.anchorMin = new Vector2(0, 0);
+    barBgRect.anchorMax = new Vector2(1, 0);
+    barBgRect.sizeDelta = new Vector2(0, 3);
+    barBgRect.anchoredPosition = new Vector2(0, -5);
 
-        RectTransform placeholderRect = placeholderObj.GetComponent<RectTransform>();
-        placeholderRect.anchorMin = Vector2.zero;
-        placeholderRect.anchorMax = Vector2.one;
-        placeholderRect.offsetMin = new Vector2(10, 0);
-        placeholderRect.offsetMax = new Vector2(-10, 0);
+    RectTransform barFillRect = barFill.GetComponent<RectTransform>();
+    barFillRect.anchorMin = Vector2.zero;
+    barFillRect.anchorMax = Vector2.one;
+    barFillRect.sizeDelta = Vector2.zero;
+    barFillRect.localScale = new Vector3(0, 1, 1);
 
-        RectTransform textRect = textObj.GetComponent<RectTransform>();
-        textRect.anchorMin = Vector2.zero;
-        textRect.anchorMax = Vector2.one;
-        textRect.offsetMin = new Vector2(10, 0);
-        textRect.offsetMax = new Vector2(-10, 0);
+    GameObject placeholderObj = new GameObject("Placeholder");
+    placeholderObj.transform.SetParent(inputObj.transform, false);
+    TextMeshProUGUI placeholder = placeholderObj.AddComponent<TextMeshProUGUI>();
+    placeholder.text = "WiFi Şifresi";
+    placeholder.fontSize = 18;
+    placeholder.alignment = TextAlignmentOptions.Left;
+    placeholder.color = new Color(0.5f, 0.5f, 0.5f);
 
-        passwordInput.placeholder = placeholder;
-        passwordInput.textComponent = inputText;
-        passwordInput.contentType = TMP_InputField.ContentType.Password;
+    GameObject textObj = new GameObject("Text");
+    textObj.transform.SetParent(inputObj.transform, false);
+    TextMeshProUGUI inputText = textObj.AddComponent<TextMeshProUGUI>();
+    inputText.fontSize = 18;
+    inputText.alignment = TextAlignmentOptions.Left;
+    inputText.color = Color.black;
 
-        RectTransform inputRect = inputObj.GetComponent<RectTransform>();
-        inputRect.anchorMin = new Vector2(0.5f, 0);
-        inputRect.anchorMax = new Vector2(0.5f, 0);
-        inputRect.sizeDelta = new Vector2(300, 40);
-        inputRect.anchoredPosition = new Vector2(0, 100);
-    }
+    RectTransform placeholderRect = placeholderObj.GetComponent<RectTransform>();
+    placeholderRect.anchorMin = Vector2.zero;
+    placeholderRect.anchorMax = Vector2.one;
+    placeholderRect.offsetMin = new Vector2(10, 0);
+    placeholderRect.offsetMax = new Vector2(-10, 0);
+
+    RectTransform textRect = textObj.GetComponent<RectTransform>();
+    textRect.anchorMin = Vector2.zero;
+    textRect.anchorMax = Vector2.one;
+    textRect.offsetMin = new Vector2(10, 0);
+    textRect.offsetMax = new Vector2(-10, 0);
+
+    passwordInput.placeholder = placeholder;
+    passwordInput.textComponent = inputText;
+    passwordInput.contentType = TMP_InputField.ContentType.Password;
+
+    // Position the input field lower
+    RectTransform inputRect = inputObj.GetComponent<RectTransform>();
+    inputRect.anchorMin = new Vector2(0.5f, 0);
+    inputRect.anchorMax = new Vector2(0.5f, 0);
+    inputRect.sizeDelta = new Vector2(300, 40);
+    inputRect.anchoredPosition = new Vector2(0, 70);
+
+    // Simple progress update
+    passwordInput.onValueChanged.AddListener((value) => {
+        float progress = Mathf.Min(1.0f, value.Length / 8.0f);
+        barFillRect.localScale = new Vector3(progress, 1, 1);
+    });
+}
 
     void CreateConnectButton()
     {
@@ -411,7 +449,7 @@ void SelectNetwork(string networkName)
         buttonRect.anchorMin = new Vector2(0.5f, 0);
         buttonRect.anchorMax = new Vector2(0.5f, 0);
         buttonRect.sizeDelta = new Vector2(200, 50);
-        buttonRect.anchoredPosition = new Vector2(0, 40);
+        buttonRect.anchoredPosition = new Vector2(0, 20);
 
         connectButton.onClick.AddListener(TryConnect);
     }
@@ -434,9 +472,25 @@ void SelectNetwork(string networkName)
         rect.anchoredPosition = new Vector2(0, 10);
     }
 
-    void ToggleWiFiPanel()
+    public void ToggleWiFiPanel(RectTransform wifiButtonRect)
     {
-        wifiPanel.SetActive(!wifiPanel.activeSelf);
+        if (!wifiPanel.activeInHierarchy)
+        {
+            // Position panel above and to the left of the WiFi button
+            RectTransform panelRect = wifiPanel.GetComponent<RectTransform>();
+            Vector2 buttonPosition = wifiButtonRect.position;
+        
+            // Adjust these offset values to fine-tune the position
+            float leftOffset = 175f;  // Move left by 100 units
+            float verticalOffset = panelRect.sizeDelta.y - 200f;  // Lower the panel by 50 units
+        
+            wifiPanel.transform.position = new Vector3(
+                buttonPosition.x - leftOffset, 
+                buttonPosition.y + verticalOffset, 
+                0
+            );
+        }
+        wifiPanel.SetActive(!wifiPanel.activeInHierarchy);
     }
 
     void TryConnect()
@@ -453,10 +507,15 @@ void SelectNetwork(string networkName)
             return;
         }
 
-        if (selectedNetwork == "Home_WiFi" && passwordInput.text == "correct123")
+        if (selectedNetwork == "Teknopark Ankara Misafir" && passwordInput.text == "123")
         {
             isConnected = true;
             ShowMessage("Başarılı! Doğru WiFi ağına bağlandınız!", Color.green);
+            // Close the panel after successful connection
+            wifiButtonImage.sprite = connectedWifiIcon;
+            wifiButtonImage.SetAllDirty(); // Görüntüyü yenilemeye zorla
+            wifiPanel.SetActive(false);
+
         }
         else
         {
