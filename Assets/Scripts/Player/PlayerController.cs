@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask platformLayer;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float coyoteTime = 0.2f;
     #endregion
 
     #region State Flags
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     #region Movement Variables
     private float _movementInputDirection;
+    private float coyoteTimeCounter;
     private int _facingDirection = 1;
     #endregion
 
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
         CheckInput();
         CheckMovementDirection();
         UpdateAnimations();
+        HandleCoyoteTime();
     }
 
     private void FixedUpdate()
@@ -73,12 +76,12 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Roll());
         }
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && coyoteTimeCounter > 0f)
         {
             Jump();
             _extraJump = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) && _extraJump > 0)
+        else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && _extraJump > 0)
         {
             Jump();
             _extraJump = 0;
@@ -126,7 +129,6 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
-        _anim.SetTrigger("Jump");
     }
 
     private IEnumerator Roll()
@@ -160,7 +162,19 @@ public class PlayerController : MonoBehaviour
 
         return raycastHit.collider != null;
     }
-    
+
+    private void HandleCoyoteTime()
+    {
+        if (IsGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+    }
+
     public void Die()
     {
         StartCoroutine(Respawn(1f));
@@ -173,7 +187,7 @@ public class PlayerController : MonoBehaviour
         transform.localScale = new Vector3(0, 0, 0);
         yield return new WaitForSeconds(duration);
         transform.position = _startPos;
-        transform.localScale = new Vector3(1, 1, 1);
+        transform.localScale = new Vector3(0.6f, 0.6f, 1);
         _rb.simulated = true;
     }
 
