@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private float _rollSpeed = 10f;
     private float _rollCooldown = 0.6f;
     private int _extraJump = 1;
+    public int ExtraJump { get => _extraJump; set => _extraJump = value; }
     #endregion
 
     private void Start()
