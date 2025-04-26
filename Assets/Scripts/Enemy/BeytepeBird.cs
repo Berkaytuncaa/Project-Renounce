@@ -15,6 +15,7 @@ public class BeytepeBird : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.flipX = false;
     }
 
     private void Update()
