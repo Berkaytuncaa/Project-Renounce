@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6885152667309713769}
   - component: {fileID: 1009381922390231128}
   - component: {fileID: 1639062178867606145}
-  - component: {fileID: 463365113012632320}
+  - component: {fileID: -6160540965678950684}
   m_Layer: 0
   m_Name: Small Car
   m_TagString: Untagged
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &463365113012632320
+--- !u!50 &-6160540965678950684
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132048727357185343}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

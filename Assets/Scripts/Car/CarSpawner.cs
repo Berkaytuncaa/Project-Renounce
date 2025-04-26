@@ -20,7 +20,7 @@ namespace Car
             }
 
             // Move all spawned objects
-            GameObject[] spawnedObjects = GameObject.FindGameObjectsWithTag("SpawnedObject");
+            GameObject[] spawnedObjects = GameObject.FindGameObjectsWithTag("SpawnedCar");
             foreach (GameObject obj in spawnedObjects)
             {
                 obj.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
@@ -37,7 +37,7 @@ namespace Car
 
                 // Spawn the object at the spawner's position
                 GameObject spawnedObject = Instantiate(selectedPrefab, transform.position, Quaternion.identity);
-                spawnedObject.tag = "SpawnedObject"; // Add tag for movement tracking
+                spawnedObject.tag = "SpawnedCar"; // Add tag for movement tracking
             }
         }
     }
