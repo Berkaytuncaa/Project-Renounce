@@ -5,8 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Obstacle
-  - TurnLeft
-  - TurnRight
+  - SpawnedCar
   layers:
   - Default
   - TransparentFX
@@ -42,7 +41,7 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 2502220825
+    uniqueID: 1301600335
     locked: 0
   - name: Default
     uniqueID: 0
