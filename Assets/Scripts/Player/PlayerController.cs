@@ -195,7 +195,6 @@ public class PlayerController : MonoBehaviour
     {
         _anim.SetBool("_isRunning", _isRunning);
         _anim.SetBool("isGrounded", IsGrounded());
-        _anim.SetFloat("yVelocity", _rb.linearVelocity.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
