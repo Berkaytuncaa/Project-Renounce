@@ -4,40 +4,41 @@ namespace Car
 {
     public class CarSpawner : MonoBehaviour
     {
-        [SerializeField] private GameObject[] prefabsToSpawn; // Array to store your prefabs
-        [SerializeField] private float spawnInterval = 2f;    // Time between spawns
-        [SerializeField] private float moveSpeed = 5f;        // Speed of movement
+        [SerializeField] private GameObject[] prefabsToSpawn;
+        [SerializeField] private float spawnInterval = 2f;
+        [SerializeField] private float moveSpeed = 5f;
 
         private float nextSpawnTime;
 
         void Update()
         {
-            // Check if it's time to spawn
             if (Time.time >= nextSpawnTime)
             {
                 SpawnObject();
                 nextSpawnTime = Time.time + spawnInterval;
             }
-
-            // Move all spawned objects
-            GameObject[] spawnedObjects = GameObject.FindGameObjectsWithTag("SpawnedCar");
-            foreach (GameObject obj in spawnedObjects)
-            {
-                obj.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
-            }
         }
 
         void SpawnObject()
         {
-            // Randomly select a prefab from the array
             if (prefabsToSpawn.Length > 0)
             {
                 int randomIndex = Random.Range(0, prefabsToSpawn.Length);
                 GameObject selectedPrefab = prefabsToSpawn[randomIndex];
 
-                // Spawn the object at the spawner's position
                 GameObject spawnedObject = Instantiate(selectedPrefab, transform.position, Quaternion.identity);
-                spawnedObject.tag = "SpawnedCar"; // Add tag for movement tracking
+                spawnedObject.tag = "SpawnedCar";
+                
+                // Add Rigidbody2D if it doesn't exist
+                Rigidbody2D rb = spawnedObject.GetComponent<Rigidbody2D>();
+                if (rb == null)
+                {
+                    rb = spawnedObject.AddComponent<Rigidbody2D>();
+                }
+                
+                // Configure the Rigidbody2D
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                rb.linearVelocity = new Vector2(-moveSpeed, 0);
             }
         }
     }
