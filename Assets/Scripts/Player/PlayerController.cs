@@ -74,12 +74,12 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Roll());
         }
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && IsGrounded())
         {
             Jump();
             _extraJump = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) && _extraJump > 0)
+        else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && _extraJump > 0)
         {
             Jump();
             _extraJump = 0;
