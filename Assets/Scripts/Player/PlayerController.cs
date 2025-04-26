@@ -127,7 +127,6 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
-        _anim.SetTrigger("Jump");
     }
 
     private IEnumerator Roll()
