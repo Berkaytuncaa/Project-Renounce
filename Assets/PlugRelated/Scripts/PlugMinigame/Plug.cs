@@ -59,9 +59,12 @@ public class Plug : MonoBehaviour
         {
             Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = mouseWorld;
-            cableRenderer.SetPosition(1, cableEndPos);
             CheckPlugging();
         }
+        
+        cableEndPos = cableEnd.transform.position;
+        
+        cableRenderer.SetPosition(1, cableEndPos);
 
         /*if (_times.Count > 0)
         {
@@ -101,7 +104,7 @@ public class Plug : MonoBehaviour
             if (success)
             {
                 _pluggedIndex = index;
-                Vector3 offset = plugType == PlugType.Double ? new Vector3(0.5f, 0f, 0f) : Vector3.zero;
+                Vector3 offset = plugType == PlugType.Double ? new Vector3(0.5f, 0.33f, 0f) : new Vector3(0f, 0.33f, 0f);
                 transform.position = socketHit.transform.position + offset;
                 _isDragging = false;
                 _isPlugged = true;
