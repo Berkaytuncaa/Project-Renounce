@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class RandomPanelSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject panelPrefab;
-    [SerializeField] private RectTransform canvasRectTransform;
+    [SerializeField] private RectTransform boundingPanelRectTransform; // Changed from canvasRectTransform
     [SerializeField] private float spawnPadding = 50f;
     
     [SerializeField] private bool autoSpawn = false;
@@ -20,27 +20,27 @@ public class RandomPanelSpawner : MonoBehaviour
     
     public void SpawnPanel()
     {
-        if (panelPrefab == null || canvasRectTransform == null)
+        if (panelPrefab == null || boundingPanelRectTransform == null)
         {
-            Debug.LogError("Please assign Panel Prefab and Canvas RectTransform!");
+            Debug.LogError("Please assign Panel Prefab and Bounding Panel RectTransform!");
             return;
         }
 
-        // Instantiate the panel as a child of the canvas
-        GameObject newPanel = Instantiate(panelPrefab, canvasRectTransform);
+        // Instantiate the panel as a child of the bounding panel
+        GameObject newPanel = Instantiate(panelPrefab, boundingPanelRectTransform);
         RectTransform panelRect = newPanel.GetComponent<RectTransform>();
 
         // Get the panel's size
         float panelWidth = panelRect.rect.width;
         float panelHeight = panelRect.rect.height;
 
-        // Get the canvas dimensions
-        float canvasWidth = canvasRectTransform.rect.width;
-        float canvasHeight = canvasRectTransform.rect.height;
+        // Get the bounding panel dimensions
+        float boundingWidth = boundingPanelRectTransform.rect.width;
+        float boundingHeight = boundingPanelRectTransform.rect.height;
 
         // Calculate the maximum position values to keep the panel in bounds
-        float maxX = (canvasWidth - panelWidth) / 2 - spawnPadding;
-        float maxY = (canvasHeight - panelHeight) / 2 - spawnPadding;
+        float maxX = (boundingWidth - panelWidth) / 2 - spawnPadding;
+        float maxY = (boundingHeight - panelHeight) / 2 - spawnPadding;
 
         // Calculate random position within the safe bounds
         float randomX = Random.Range(-maxX, maxX);
@@ -62,13 +62,13 @@ public class RandomPanelSpawner : MonoBehaviour
         float panelWidth = panelRect.rect.width;
         float panelHeight = panelRect.rect.height;
 
-        // Get the canvas dimensions
-        float canvasWidth = canvasRectTransform.rect.width;
-        float canvasHeight = canvasRectTransform.rect.height;
+        // Get the bounding panel dimensions
+        float boundingWidth = boundingPanelRectTransform.rect.width;
+        float boundingHeight = boundingPanelRectTransform.rect.height;
 
         // Calculate the bounds
-        float maxX = (canvasWidth - panelWidth) / 2 - spawnPadding;
-        float maxY = (canvasHeight - panelHeight) / 2 - spawnPadding;
+        float maxX = (boundingWidth - panelWidth) / 2 - spawnPadding;
+        float maxY = (boundingHeight - panelHeight) / 2 - spawnPadding;
 
         // Clamp the position
         position.x = Mathf.Clamp(position.x, -maxX, maxX);
@@ -78,7 +78,6 @@ public class RandomPanelSpawner : MonoBehaviour
         panelRect.anchoredPosition = position;
     }
 
-    // Call this method to manually spawn a panel
     public void SpawnPanelButton()
     {
         SpawnPanel();
