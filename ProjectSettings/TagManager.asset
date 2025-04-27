@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - SpawnedCar
+  - Socket
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - UI
   - Platform
   - Player
-  - 
-  - 
+  - Plug
+  - Socket
   - 
   - 
   - 
