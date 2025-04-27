@@ -13,12 +13,16 @@ public class Plug : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject cableEnd;
+    [SerializeField] private GameObject cableStart;
     [SerializeField] private GameObject plug;
     [SerializeField] private LineRenderer cableRenderer;
     [SerializeField] private GameObject socketManagerObj;
     public PlugType plugType;
 
-    private Queue<float> _times = new Queue<float>();
+    //private Queue<float> _times = new Queue<float>();
+    
+    private Vector3 cableStartPos;
+    private Vector3 cableEndPos;
 
     private SocketManager socketManager;
 
@@ -31,40 +35,51 @@ public class Plug : MonoBehaviour
 
     private LayerMask _targetLayer;
     private LayerMask _plugLayer;
-    private Queue<BoxCollider2D> _disableQueue = new Queue<BoxCollider2D>();
+    //private Queue<BoxCollider2D> _disableQueue = new Queue<BoxCollider2D>();
 
     private Collider2D _collider;
+    private Collider2D _colliderPlug;
 
     void Start()
     {
-        _targetLayer = LayerMask.GetMask("Sockets");
-        _plugLayer = LayerMask.GetMask("Plugs");
+        _targetLayer = LayerMask.GetMask("Socket");
+        _plugLayer = LayerMask.GetMask("Plug");
         socketManager = socketManagerObj.GetComponent<SocketManager>();
-        _collider = plug.GetComponent<Collider2D>();
+        _colliderPlug = plug.GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
+        cableStartPos = cableStart.transform.position;
+        cableEndPos = cableEnd.transform.position;
+        cableRenderer.SetPosition(0, cableStartPos);
+        cableRenderer.SetPosition(1, cableEndPos);
     }
 
     void Update()
     {
-        if (_isDragging)
+        if (_isDragging && !_isPlugged)
         {
             Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = mouseWorld;
             CheckPlugging();
         }
+        
+        cableEndPos = cableEnd.transform.position;
+        
+        cableRenderer.SetPosition(1, cableEndPos);
 
-        if (_times.Count > 0)
+        /*if (_times.Count > 0)
         {
             if (Time.time - 1f >= _times.Peek())
             {
                 _disableQueue.Dequeue().enabled = true;
                 _times.Dequeue();
             }
-        }
+        }*/
     }
 
     private void CheckPlugging()
     {
-        Collider2D socketHit = Physics2D.OverlapCircle(transform.position, 0.1f, _targetLayer);
+        Vector2 hitPos = plugType == PlugType.Double ? (Vector2) transform.position + new Vector2(-0.5f, 0f) : transform.position;
+        Collider2D socketHit = Physics2D.OverlapCircle(hitPos, 0.1f, _targetLayer);
 
         if (socketHit)
         {
@@ -89,7 +104,7 @@ public class Plug : MonoBehaviour
             if (success)
             {
                 _pluggedIndex = index;
-                Vector3 offset = plugType == PlugType.Double ? new Vector3(0.5f, 0f, 0f) : Vector3.zero;
+                Vector3 offset = plugType == PlugType.Double ? new Vector3(0.5f, 0.33f, 0f) : new Vector3(0f, 0.33f, 0f);
                 transform.position = socketHit.transform.position + offset;
                 _isDragging = false;
                 _isPlugged = true;
