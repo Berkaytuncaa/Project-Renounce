@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e785e682659c848b79021467e2844aea
+guid: b12afcd1a5e88a34f8242fafd6d89a6d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4276216952335420606
-    second: plug_background_0
+      213: -129141016681136931
+    second: "popup_k\xFClsealtun_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: plug_background_0
+      name: "popup_k\xFClsealtun_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 240
-        height: 135
+        width: 480
+        height: 270
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebcc47a69ac285b30800000000000000
-      internalID: 4276216952335420606
+      spriteID: ddcb9c6fde2353ef0800000000000000
+      internalID: -129141016681136931
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      plug_background_0: 4276216952335420606
+      "popup_k\xFClsealtun_0": -129141016681136931
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

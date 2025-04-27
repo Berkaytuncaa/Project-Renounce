@@ -1,46 +1,81 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 public class RandomPanelSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject panelPrefab;
-    [SerializeField] private RectTransform canvasRectTransform;
+    [SerializeField] private GameObject[] panelPrefabs; // Changed to array of prefabs
+    [SerializeField] private RectTransform boundingPanelRectTransform;
     [SerializeField] private float spawnPadding = 50f;
     
     [SerializeField] private bool autoSpawn = false;
     [SerializeField] private float spawnInterval = 2f;
+
+    [SerializeField] private GameObject noInternetPanel;
+    [SerializeField] private GameObject yesInternetPanel;
+
+    private List<GameObject> activePanels = new List<GameObject>();
+    private string spawnInvokeMethod = "SpawnPanel";
     
     private void Start()
     {
         if (autoSpawn)
         {
-            InvokeRepeating("SpawnPanel", 0f, spawnInterval);
+            InvokeRepeating(spawnInvokeMethod, 0f, spawnInterval);
+        }
+    }
+
+    private void Update()
+    {
+        // Remove any destroyed panels from our list
+        activePanels.RemoveAll(panel => panel == null);
+
+        // If no panels remain and we have an active invoke, cancel it
+        if (activePanels.Count == 0 && IsInvoking(spawnInvokeMethod))
+        {
+            CancelInvoke(spawnInvokeMethod);
+            Debug.Log("All panels have been destroyed. Stopping spawn.");
+            noInternetPanel.SetActive(false);
+            yesInternetPanel.SetActive(true);
         }
     }
     
     public void SpawnPanel()
     {
-        if (panelPrefab == null || canvasRectTransform == null)
+        if (panelPrefabs == null || panelPrefabs.Length == 0 || boundingPanelRectTransform == null)
         {
-            Debug.LogError("Please assign Panel Prefab and Canvas RectTransform!");
+            Debug.LogError("Please assign Panel Prefabs and Bounding Panel RectTransform!");
             return;
         }
 
-        // Instantiate the panel as a child of the canvas
-        GameObject newPanel = Instantiate(panelPrefab, canvasRectTransform);
+        // Select a random prefab from the array
+        GameObject selectedPrefab = panelPrefabs[Random.Range(0, panelPrefabs.Length)];
+        
+        if (selectedPrefab == null)
+        {
+            Debug.LogError("Selected prefab is null!");
+            return;
+        }
+
+        // Instantiate the panel as a child of the bounding panel
+        GameObject newPanel = Instantiate(selectedPrefab, boundingPanelRectTransform);
         RectTransform panelRect = newPanel.GetComponent<RectTransform>();
+
+        // Add the new panel to our tracking list
+        activePanels.Add(newPanel);
 
         // Get the panel's size
         float panelWidth = panelRect.rect.width;
         float panelHeight = panelRect.rect.height;
 
-        // Get the canvas dimensions
-        float canvasWidth = canvasRectTransform.rect.width;
-        float canvasHeight = canvasRectTransform.rect.height;
+        // Get the bounding panel dimensions
+        float boundingWidth = boundingPanelRectTransform.rect.width;
+        float boundingHeight = boundingPanelRectTransform.rect.height;
 
         // Calculate the maximum position values to keep the panel in bounds
-        float maxX = (canvasWidth - panelWidth) / 2 - spawnPadding;
-        float maxY = (canvasHeight - panelHeight) / 2 - spawnPadding;
+        float maxX = (boundingWidth - panelWidth) / 2 - spawnPadding;
+        float maxY = (boundingHeight - panelHeight) / 2 - spawnPadding;
 
         // Calculate random position within the safe bounds
         float randomX = Random.Range(-maxX, maxX);
@@ -62,13 +97,13 @@ public class RandomPanelSpawner : MonoBehaviour
         float panelWidth = panelRect.rect.width;
         float panelHeight = panelRect.rect.height;
 
-        // Get the canvas dimensions
-        float canvasWidth = canvasRectTransform.rect.width;
-        float canvasHeight = canvasRectTransform.rect.height;
+        // Get the bounding panel dimensions
+        float boundingWidth = boundingPanelRectTransform.rect.width;
+        float boundingHeight = boundingPanelRectTransform.rect.height;
 
         // Calculate the bounds
-        float maxX = (canvasWidth - panelWidth) / 2 - spawnPadding;
-        float maxY = (canvasHeight - panelHeight) / 2 - spawnPadding;
+        float maxX = (boundingWidth - panelWidth) / 2 - spawnPadding;
+        float maxY = (boundingHeight - panelHeight) / 2 - spawnPadding;
 
         // Clamp the position
         position.x = Mathf.Clamp(position.x, -maxX, maxX);
@@ -78,9 +113,16 @@ public class RandomPanelSpawner : MonoBehaviour
         panelRect.anchoredPosition = position;
     }
 
-    // Call this method to manually spawn a panel
     public void SpawnPanelButton()
     {
         SpawnPanel();
+    }
+
+    public void RestartSpawning()
+    {
+        if (!IsInvoking(spawnInvokeMethod) && autoSpawn)
+        {
+            InvokeRepeating(spawnInvokeMethod, 0f, spawnInterval);
+        }
     }
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e785e682659c848b79021467e2844aea
+guid: 8e8e29d2847ac8847bdc1dac14af4440
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4276216952335420606
-    second: plug_background_0
+      213: -4994900036950177157
+    second: popupgame_background_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: plug_background_0
+      name: popupgame_background_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 240
-        height: 135
+        width: 480
+        height: 270
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebcc47a69ac285b30800000000000000
-      internalID: 4276216952335420606
+      spriteID: b7acff861ec8eaab0800000000000000
+      internalID: -4994900036950177157
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      plug_background_0: 4276216952335420606
+      popupgame_background_0: -4994900036950177157
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
