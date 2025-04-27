@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: a5a19ed0ba7d6614183ab15c771e5ebd
+guid: 251dbfd808554064bb1ddd27661a1944
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6010608223010618213
-    second: wifi_0
-  - first:
-      213: -282332362840517431
-    second: wifi_1
-  - first:
-      213: 3685890569525003487
-    second: wifi_2
-  - first:
-      213: 107041130348426547
-    second: wifi_3
+      213: 5857869161068143423
+    second: popup_system32_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wifi_0
+      name: popup_system32_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 31
-        width: 34
-        height: 10
+        x: 0
+        y: 0
+        width: 480
+        height: 270
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,74 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 56bf6905558f96350800000000000000
-      internalID: 6010608223010618213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wifi_1
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 27
-        width: 26
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c45b4c3634f41cf0800000000000000
-      internalID: -282332362840517431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wifi_2
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 24
-        width: 17
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd4008db1f9e62330800000000000000
-      internalID: 3685890569525003487
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: wifi_3
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 18
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 33536c647594c7100800000000000000
-      internalID: 107041130348426547
+      spriteID: f33ae2637f45b4150800000000000000
+      internalID: 5857869161068143423
       vertices: []
       indices: 
       edges: []
@@ -210,10 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      wifi_0: 6010608223010618213
-      wifi_1: -282332362840517431
-      wifi_2: 3685890569525003487
-      wifi_3: 107041130348426547
+      popup_system32_0: 5857869161068143423
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
