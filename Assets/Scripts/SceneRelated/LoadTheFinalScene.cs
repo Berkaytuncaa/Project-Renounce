@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class LoadTheFinalScene : MonoBehaviour
 {
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void Start()
     {
         StartCoroutine(LoadNextSceneAfterDelay());
@@ -13,6 +20,7 @@ public class LoadTheFinalScene : MonoBehaviour
 
     private IEnumerator LoadNextSceneAfterDelay()
     {
+        audioManager.PlaySFX(audioManager.textScrool);
         yield return new WaitForSeconds(4f);
 
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;

@@ -42,6 +42,13 @@ public class PlayerController : MonoBehaviour
     public int ExtraJump { get => _extraJump; set => _extraJump = value; }
     #endregion
 
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -130,6 +137,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        audioManager.PlaySFX(audioManager.jumpWhoosh1);
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, jumpForce);
     }
 
@@ -179,6 +187,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        audioManager.PlaySFX(audioManager.hurt1);
         StartCoroutine(Respawn(1f));
     }
 

@@ -4,10 +4,18 @@ public class MushroomScript : MonoBehaviour
 {
     public float bounceForce = 15f;
 
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            audioManager.PlaySFX(audioManager.pop1);
             foreach (ContactPoint2D contact in collision.contacts)
             {
                 if (contact.normal.y <= -0.5f)
