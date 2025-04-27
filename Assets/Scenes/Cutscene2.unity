@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "car_sonras\u0131_cutscene 1"
       objectReference: {fileID: 0}
+    - target: {fileID: 1160356261127867848, guid: d28a88c1597914cef9334d57b1cc4412, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5105f10daa3924ffb882607fa2d14528, type: 2}
     - target: {fileID: 7878350319992209165, guid: d28a88c1597914cef9334d57b1cc4412, type: 3}
       propertyPath: m_LocalScale.x
       value: 6
