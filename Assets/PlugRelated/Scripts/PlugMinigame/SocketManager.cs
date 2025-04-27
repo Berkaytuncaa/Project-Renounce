@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SocketManager : MonoBehaviour
 {
@@ -118,11 +119,16 @@ public class SocketManager : MonoBehaviour
     // Call this explicitly after calling place functions.
     public void CheckSuccess()
     {
-        if (plugCount >= 4)
+        if (plugCount >= 5)
         {
-            // TODO: ADVANCE THE GAME
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         Debug.Log(plugCount);
     }
-    
+
+
+    public void ReplayClicked()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

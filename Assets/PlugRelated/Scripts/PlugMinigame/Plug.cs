@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Plug : MonoBehaviour
@@ -16,7 +18,7 @@ public class Plug : MonoBehaviour
     [SerializeField] private GameObject socketManagerObj;
     public PlugType plugType;
 
-    private float _time;
+    private Queue<float> _times = new Queue<float>();
 
     private SocketManager socketManager;
 
@@ -29,6 +31,7 @@ public class Plug : MonoBehaviour
 
     private LayerMask _targetLayer;
     private LayerMask _plugLayer;
+    private Queue<BoxCollider2D> _disableQueue = new Queue<BoxCollider2D>();
 
     private Collider2D _collider;
 
@@ -48,11 +51,20 @@ public class Plug : MonoBehaviour
             transform.position = mouseWorld;
             CheckPlugging();
         }
+
+        if (_times.Count > 0)
+        {
+            if (Time.time - 1f >= _times.Peek())
+            {
+                _disableQueue.Dequeue().enabled = true;
+                _times.Dequeue();
+            }
+        }
     }
 
     private void CheckPlugging()
     {
-        Collider2D socketHit = Physics2D.OverlapCircle(transform.position, 0.3f, _targetLayer);
+        Collider2D socketHit = Physics2D.OverlapCircle(transform.position, 0.1f, _targetLayer);
 
         if (socketHit)
         {
@@ -81,8 +93,9 @@ public class Plug : MonoBehaviour
                 transform.position = socketHit.transform.position + offset;
                 _isDragging = false;
                 _isPlugged = true;
-                _collider = socketHit.gameObject.GetComponent<Collider2D>();
-                _collider.enabled = false;
+                plug.GetComponent<BoxCollider2D>().enabled = false;
+                //_collider = socketHit.gameObject.GetComponent<Collider2D>();
+                //_collider.enabled = false;
                 socketManager.CheckSuccess();
             }
         }
@@ -90,9 +103,10 @@ public class Plug : MonoBehaviour
         {
             if (_pluggedIndex != -1)
             {
-                _isPlugged = false;
+                /*_isPlugged = false;
+                _disableQueue.Append(_collider);
                 _collider.enabled = false;
-                _time = Time.time;
+                _times.Append(Time.time);
                 switch (plugType)
                 {
                     case PlugType.Single:
@@ -105,7 +119,7 @@ public class Plug : MonoBehaviour
                         socketManager.removeTripleSocket(_pluggedIndex);
                         break;
                 }
-                _pluggedIndex = -1;
+                _pluggedIndex = -1;*/
             }
         }
     }
