@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fe838f16ed1b942fdb1acc99d2637857
+guid: 25d20dab68f30994991426680db1f2ca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4994900036950177157
-    second: popupgame_background_0
+      213: -5138634346968428034
+    second: ikiz kuleler(1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: popupgame_background_0
+      name: ikiz kuleler(1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b7acff861ec8eaab0800000000000000
-      internalID: -4994900036950177157
+      spriteID: ef1535e7947efa8b0800000000000000
+      internalID: -5138634346968428034
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      popupgame_background_0: -4994900036950177157
+      ikiz kuleler(1)_0: -5138634346968428034
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
