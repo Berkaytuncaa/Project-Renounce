@@ -185,9 +185,12 @@ MonoBehaviour:
   hurt1: {fileID: 8300000, guid: 7140a140c65594962ae7f88ab24b612e, type: 3}
   pop1: {fileID: 8300000, guid: 3227ef92be4be49248698554d603b4b5, type: 3}
   jumpWhoosh1: {fileID: 8300000, guid: 75565550a15f64af69a6575514fcee3d, type: 3}
-  binbanbon: {fileID: 0}
+  binbanbon: {fileID: 8300000, guid: 53a5ecdba2bab4d4d89a87165758523a, type: 3}
   textScrool: {fileID: 8300000, guid: 365d9d0b80b4446229a7858344656a14, type: 3}
   textScroolClown: {fileID: 8300000, guid: ec2e67abc6e0a428a8e7610db2e39ef8, type: 3}
+  carPassing: {fileID: 8300000, guid: ae8bcd54e30ac40d7be4c487d12028c9, type: 3}
+  traffic: {fileID: 8300000, guid: 7a89cc31f74ec4c84bc056dfae596a22, type: 3}
+  tump: {fileID: 8300000, guid: 6062596c27c4a46e9954e3e8e7602e66, type: 3}
 --- !u!1 &8221550758735052784
 GameObject:
   m_ObjectHideFlags: 0

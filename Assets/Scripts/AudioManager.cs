@@ -24,6 +24,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip binbanbon; // Cutscene 4
     public AudioClip textScrool; // Ahmet ve Emir Speech
     public AudioClip textScroolClown; // CarScene Gülse
+    public AudioClip carPassing;
+    public AudioClip traffic;
+    public AudioClip tump;
 
     public static AudioManager instance;
 
@@ -54,7 +57,13 @@ public class AudioManager : MonoBehaviour
             case "MainMenu":
                 SetBackgroundMusic(mainMenuMusic);
                 break;
+            case "KaymakScene":
+                SetBackgroundMusic(gameplayMusic);
+                break;
             case "BeytepeScene":
+                SetBackgroundMusic(gameplayMusic);
+                break;
+            case "CarScene":
                 SetBackgroundMusic(gameplayMusic);
                 break;
             case "SpecialThanks":
@@ -63,8 +72,17 @@ public class AudioManager : MonoBehaviour
             case "Cutscene4":
                 SetBackgroundMusic(null);
                 break;
+            case "Cutscene3":
+                SetBackgroundMusic(gameplayMusic);
+                break;
+            case "Cutscene2":
+                SetBackgroundMusic(gameplayMusic);
+                break;
+            case "Cutscene1":
+                SetBackgroundMusic(gameplayMusic);
+                break;
             default:
-                SetBackgroundMusic(null);
+                SetBackgroundMusic(gameplayMusic);
                 break;
         }
     }

@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class LoadAfterCar : MonoBehaviour
 {
+    private AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void Start()
     {
         StartCoroutine(LoadNextSceneAfterDelay());

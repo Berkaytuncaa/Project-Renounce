@@ -14,7 +14,7 @@ public class BouncePad : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            audioManager.PlaySFX(audioManager.boing4);
+            // audioManager.PlaySFX(audioManager.tump);
             foreach (ContactPoint2D contact in collision.contacts)
             {
                 if (contact.normal.y <= -0.5f)
