@@ -1,34 +1,69 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 public class RandomPanelSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject panelPrefab;
-    [SerializeField] private RectTransform boundingPanelRectTransform; // Changed from canvasRectTransform
+    [SerializeField] private GameObject[] panelPrefabs; // Changed to array of prefabs
+    [SerializeField] private RectTransform boundingPanelRectTransform;
     [SerializeField] private float spawnPadding = 50f;
     
     [SerializeField] private bool autoSpawn = false;
     [SerializeField] private float spawnInterval = 2f;
+
+    [SerializeField] private GameObject noInternetPanel;
+    [SerializeField] private GameObject yesInternetPanel;
+
+    private List<GameObject> activePanels = new List<GameObject>();
+    private string spawnInvokeMethod = "SpawnPanel";
     
     private void Start()
     {
         if (autoSpawn)
         {
-            InvokeRepeating("SpawnPanel", 0f, spawnInterval);
+            InvokeRepeating(spawnInvokeMethod, 0f, spawnInterval);
+        }
+    }
+
+    private void Update()
+    {
+        // Remove any destroyed panels from our list
+        activePanels.RemoveAll(panel => panel == null);
+
+        // If no panels remain and we have an active invoke, cancel it
+        if (activePanels.Count == 0 && IsInvoking(spawnInvokeMethod))
+        {
+            CancelInvoke(spawnInvokeMethod);
+            Debug.Log("All panels have been destroyed. Stopping spawn.");
+            noInternetPanel.SetActive(false);
+            yesInternetPanel.SetActive(true);
         }
     }
     
     public void SpawnPanel()
     {
-        if (panelPrefab == null || boundingPanelRectTransform == null)
+        if (panelPrefabs == null || panelPrefabs.Length == 0 || boundingPanelRectTransform == null)
         {
-            Debug.LogError("Please assign Panel Prefab and Bounding Panel RectTransform!");
+            Debug.LogError("Please assign Panel Prefabs and Bounding Panel RectTransform!");
+            return;
+        }
+
+        // Select a random prefab from the array
+        GameObject selectedPrefab = panelPrefabs[Random.Range(0, panelPrefabs.Length)];
+        
+        if (selectedPrefab == null)
+        {
+            Debug.LogError("Selected prefab is null!");
             return;
         }
 
         // Instantiate the panel as a child of the bounding panel
-        GameObject newPanel = Instantiate(panelPrefab, boundingPanelRectTransform);
+        GameObject newPanel = Instantiate(selectedPrefab, boundingPanelRectTransform);
         RectTransform panelRect = newPanel.GetComponent<RectTransform>();
+
+        // Add the new panel to our tracking list
+        activePanels.Add(newPanel);
 
         // Get the panel's size
         float panelWidth = panelRect.rect.width;
@@ -81,5 +116,13 @@ public class RandomPanelSpawner : MonoBehaviour
     public void SpawnPanelButton()
     {
         SpawnPanel();
+    }
+
+    public void RestartSpawning()
+    {
+        if (!IsInvoking(spawnInvokeMethod) && autoSpawn)
+        {
+            InvokeRepeating(spawnInvokeMethod, 0f, spawnInterval);
+        }
     }
 }
