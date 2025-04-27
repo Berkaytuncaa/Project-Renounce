@@ -1333,7 +1333,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1471694246416437493, guid: 342d4b21c2cec4e74a2d00cd4bb5152d, type: 3}
       propertyPath: m_Volume
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4837324844242286440, guid: 342d4b21c2cec4e74a2d00cd4bb5152d, type: 3}
       propertyPath: binbanbon
@@ -1342,7 +1342,7 @@ PrefabInstance:
     - target: {fileID: 4837324844242286440, guid: 342d4b21c2cec4e74a2d00cd4bb5152d, type: 3}
       propertyPath: outroMusic
       value: 
-      objectReference: {fileID: 8300000, guid: b28eef668cf9845ebb6c8434f520b879, type: 3}
+      objectReference: {fileID: 8300000, guid: af323ef89eb3a4d7e99e12d45d27a8e3, type: 3}
     - target: {fileID: 5372454301963516694, guid: 342d4b21c2cec4e74a2d00cd4bb5152d, type: 3}
       propertyPath: m_Name
       value: Audio Manager
