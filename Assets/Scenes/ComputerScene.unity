@@ -803,7 +803,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Masa al\u0131n, masalay\u0131n, sipari\u015F verin, hemen teslim al\u0131n!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dae3de10fe1224e99977483457f38202, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fbf73a4a283164a44a54f1d7ad97bcb2, type: 2}
   m_sharedMaterial: {fileID: 2422243306182230014, guid: dae3de10fe1224e99977483457f38202, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &509152112
@@ -1031,7 +1031,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: www.masa.super.gov.tr
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dae3de10fe1224e99977483457f38202, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fbf73a4a283164a44a54f1d7ad97bcb2, type: 2}
   m_sharedMaterial: {fileID: 2422243306182230014, guid: dae3de10fe1224e99977483457f38202, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &780033152
@@ -1245,7 +1245,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Sipari\u015F Ver!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dae3de10fe1224e99977483457f38202, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fbf73a4a283164a44a54f1d7ad97bcb2, type: 2}
   m_sharedMaterial: {fileID: 2422243306182230014, guid: dae3de10fe1224e99977483457f38202, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1470369883
@@ -1466,7 +1466,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: X
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dae3de10fe1224e99977483457f38202, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fbf73a4a283164a44a54f1d7ad97bcb2, type: 2}
   m_sharedMaterial: {fileID: 2422243306182230014, guid: dae3de10fe1224e99977483457f38202, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1532,7 +1532,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1654159450
@@ -2112,7 +2112,7 @@ MonoBehaviour:
     Yok \u0130nternet Yok \u0130nternet Yok \u0130nternet Yok \u0130nternet Yok \u0130nternet
     Yok \u0130nternet Yok "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dae3de10fe1224e99977483457f38202, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fbf73a4a283164a44a54f1d7ad97bcb2, type: 2}
   m_sharedMaterial: {fileID: 2422243306182230014, guid: dae3de10fe1224e99977483457f38202, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2178,7 +2178,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2142693823

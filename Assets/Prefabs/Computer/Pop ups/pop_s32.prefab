@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "C:/Macos/System32 silindi. Geri y\xFCklemek ister misiniz?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dae3de10fe1224e99977483457f38202, type: 2}
-  m_sharedMaterial: {fileID: 2422243306182230014, guid: dae3de10fe1224e99977483457f38202, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fbf73a4a283164a44a54f1d7ad97bcb2, type: 2}
+  m_sharedMaterial: {fileID: 2422243306182230014, guid: fbf73a4a283164a44a54f1d7ad97bcb2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -203,8 +203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Bu tatl\u0131 k\xF6pe\u011Fin \xF6lmesini tercih ederim"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dae3de10fe1224e99977483457f38202, type: 2}
-  m_sharedMaterial: {fileID: 2422243306182230014, guid: dae3de10fe1224e99977483457f38202, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fbf73a4a283164a44a54f1d7ad97bcb2, type: 2}
+  m_sharedMaterial: {fileID: 2422243306182230014, guid: fbf73a4a283164a44a54f1d7ad97bcb2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
