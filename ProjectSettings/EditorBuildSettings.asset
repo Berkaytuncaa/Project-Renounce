@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ComputerScene.unity
     guid: 50e4b8fabb0ab254b85b98853f358e80
+  - enabled: 1
+    path: Assets/Scenes/Cutscene4.unity
+    guid: 26d51e22f1af94afe9f4dba96ff2f1ff
+  - enabled: 1
+    path: Assets/Scenes/SpecialThanks.unity
+    guid: 4d9797e9c9a37464685a20e765ef146b
   - enabled: 0
     path: Assets/PlugRelated/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02

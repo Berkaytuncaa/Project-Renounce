@@ -60,6 +60,12 @@ public class AudioManager : MonoBehaviour
             case "SpecialThanks":
                 SetBackgroundMusic(outroMusic);
                 break;
+            case "Cutscene4":
+                SetBackgroundMusic(null);
+                break;
+            default:
+                SetBackgroundMusic(null);
+                break;
         }
     }
 
