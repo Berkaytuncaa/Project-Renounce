@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "ko\u0308stebek_0"
+      name: "k\xF6stebek_0"
       rect:
         serializedVersion: 2
         x: 0
@@ -122,21 +122,21 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9222424eedca55490800000000000000
-      internalID: -7758104709765520855
+      spriteID: 35a1dc5e5c6513044b7f1c544f20c708
+      internalID: -1948469102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ko\u0308stebek_1"
+      name: "k\xF6stebek_1"
       rect:
         serializedVersion: 2
-        x: 17
+        x: 16
         y: 0
-        width: 15
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -144,21 +144,21 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f89347df02680a200800000000000000
-      internalID: 189298660598888847
+      spriteID: 4199266050669694eb7869efcd0c0b49
+      internalID: -907674677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ko\u0308stebek_2"
+      name: "k\xF6stebek_2"
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 0
-        width: 14
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,21 +166,21 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9a2ae039d3f3f7dc0800000000000000
-      internalID: -3639120440199306583
+      spriteID: 7a6d8e7f60588304fb6d7f7f8423c834
+      internalID: 433710566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "ko\u0308stebek_3"
+      name: "k\xF6stebek_3"
       rect:
         serializedVersion: 2
-        x: 49
+        x: 48
         y: 0
-        width: 15
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -188,10 +188,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f54959139fec075a0800000000000000
-      internalID: -6525488290385783713
+      spriteID: 267c8ab4a231a7a40b6abd64ad588250
+      internalID: -384605318
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "ko\u0308stebek_0": -7758104709765520855
-      "ko\u0308stebek_1": 189298660598888847
-      "ko\u0308stebek_2": -3639120440199306583
-      "ko\u0308stebek_3": -6525488290385783713
+      "k\xF6stebek_0": -1948469102
+      "k\xF6stebek_1": -907674677
+      "k\xF6stebek_2": 433710566
+      "k\xF6stebek_3": -384605318
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

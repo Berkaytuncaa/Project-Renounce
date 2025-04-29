@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8403560616069924459, guid: 6e4916c813b5d4e81aca84184013c9b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1948469102, guid: 0ea51d28095994cf08e24af1d98a406f, type: 3}
+    - target: {fileID: 8403560616069924459, guid: 6e4916c813b5d4e81aca84184013c9b3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8823129566807862147, guid: 6e4916c813b5d4e81aca84184013c9b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.46
@@ -93387,7 +93395,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7758104709765520855, guid: 0ea51d28095994cf08e24af1d98a406f, type: 3}
+  m_Sprite: {fileID: -1948469102, guid: 0ea51d28095994cf08e24af1d98a406f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96319,6 +96327,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: "K\xF6stebek (1)"
       objectReference: {fileID: 0}
+    - target: {fileID: 8403560616069924459, guid: 6e4916c813b5d4e81aca84184013c9b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1948469102, guid: 0ea51d28095994cf08e24af1d98a406f, type: 3}
+    - target: {fileID: 8403560616069924459, guid: 6e4916c813b5d4e81aca84184013c9b3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8823129566807862147, guid: 6e4916c813b5d4e81aca84184013c9b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.54
@@ -97062,7 +97078,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1742364088
@@ -97762,6 +97778,14 @@ PrefabInstance:
     - target: {fileID: 6338530266276912199, guid: 6e4916c813b5d4e81aca84184013c9b3, type: 3}
       propertyPath: m_Name
       value: "K\xF6stebek"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403560616069924459, guid: 6e4916c813b5d4e81aca84184013c9b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1948469102, guid: 0ea51d28095994cf08e24af1d98a406f, type: 3}
+    - target: {fileID: 8403560616069924459, guid: 6e4916c813b5d4e81aca84184013c9b3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8823129566807862147, guid: 6e4916c813b5d4e81aca84184013c9b3, type: 3}
       propertyPath: m_LocalPosition.x
